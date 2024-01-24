@@ -28,6 +28,7 @@
           "vehicle_type": "Vehicle Type",
           "incl_filter": "Substring in Description of Selected Route",
           "excl_filter": "Substring NOT in Description of Selected Route",
+          "distance_filter": "Maximum Distance of Selected Route",
           "realtime": "Realtime Travel Time?",
           "avoid_toll_roads": "Avoid Toll Roads?",
           "avoid_ferries": "Avoid Ferries?",

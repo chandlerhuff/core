@@ -23,6 +23,7 @@ from .const import (
     CONF_DESTINATION,
     CONF_EXCL_FILTER,
     CONF_INCL_FILTER,
+    CONF_DISTANCE_FILTER,
     CONF_ORIGIN,
     CONF_REALTIME,
     CONF_UNITS,
@@ -41,6 +42,7 @@ OPTIONS_SCHEMA = vol.Schema(
     {
         vol.Optional(CONF_INCL_FILTER, default=""): TextSelector(),
         vol.Optional(CONF_EXCL_FILTER, default=""): TextSelector(),
+        vol.Optional(CONF_DISTANCE_FILTER, default=""): TextSelector(),
         vol.Optional(CONF_REALTIME): BooleanSelector(),
         vol.Required(CONF_VEHICLE_TYPE): SelectSelector(
             SelectSelectorConfig(

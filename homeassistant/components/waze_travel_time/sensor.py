@@ -36,6 +36,7 @@ from .const import (
     CONF_DESTINATION,
     CONF_EXCL_FILTER,
     CONF_INCL_FILTER,
+    CONF_DISTANCE_FILTER,
     CONF_ORIGIN,
     CONF_REALTIME,
     CONF_UNITS,
@@ -183,6 +184,7 @@ class WazeTravelTimeData:
             # Grab options on every update
             incl_filter = self.config_entry.options.get(CONF_INCL_FILTER)
             excl_filter = self.config_entry.options.get(CONF_EXCL_FILTER)
+            distance_filter = self.config_entry.options.get(CONF_DISTANCE_FILTER)
             realtime = self.config_entry.options[CONF_REALTIME]
             vehicle_type = self.config_entry.options[CONF_VEHICLE_TYPE]
             vehicle_type = "" if vehicle_type.upper() == "CAR" else vehicle_type.upper()
@@ -217,6 +219,13 @@ class WazeTravelTimeData:
                         k: v
                         for k, v in routes.items()
                         if excl_filter.lower() not in k.lower()
+                    }
+
+                if distance_filter not in {None, ""}:
+                    routes = {
+                        k: v
+                        for k, v in routes.items()
+                        if v[1] < float(distance_filter)
                     }
 
                 if routes:
